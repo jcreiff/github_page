@@ -1,1 +1,37 @@
 <%= @repo_list %>
+
+<li class="repo-list-item public fork">
+  <div class="repo-list-stats">
+      <!-- <%= language %> -->
+    <a class="repo-list-stat-item tooltipped tooltipped-s" href="/jcreiff/battleship/stargazers" aria-label="Stargazers">
+      <span class="octicon octicon-star"></span>
+      <!-- <%= stargazer_count %> -->
+    </a>
+    <a class="repo-list-stat-item tooltipped tooltipped-s" href="/jcreiff/battleship/network"  aria-label="Forks">
+      <span class="octicon octicon-git-branch"></span>
+      <!-- <%= fork_count %> -->
+    </a>
+  </div>
+
+  <h3 class="repo-list-name">
+    <!-- <a href="<%=/@USERNAME/@rep0NAME%>">
+      <%= name %>p</a> -->
+  </h3>
+
+    <p class="repo-list-info">
+      <span class="octicon octicon-repo-forked"></span>
+      forked from <a href="/ZAS0923/battleship">ZAS0923/battleship</a>
+    </p>
+
+    <p class="repo-list-description">
+      <!-- <%= description %> -->
+    </p>
+
+  <p class="repo-list-meta">
+      <!-- Updated <time datetime=<%= last_update %> is="relative-time">May 26, 2015</time> -->
+  </p>
+
+  <div class="participation-graph">
+    <!-- <poll-include-fragment src="/<%= username %>/<%= reponame %>/graphs/participation?h=80&amp;w=640"></poll-include-fragment> -->
+  </div>
+</li>
