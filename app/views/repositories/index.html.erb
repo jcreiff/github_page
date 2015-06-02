@@ -1,5 +1,6 @@
 <%= form_tag repositories_show_path do %>
 <%= "Please enter a GitHub username" %>
+<% label_tag (:username) %>
 <%= text_field_tag (:username) %>
 <%= submit_tag "Show me the money" %>
 <% end %>

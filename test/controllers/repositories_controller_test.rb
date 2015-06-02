@@ -7,7 +7,7 @@ class RepositoriesControllerTest < ActionController::TestCase
   end
 
   test "should get show" do
-    get :show
+    post :show
     assert_response :success
   end
 
