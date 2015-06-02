@@ -1,1 +1,8 @@
-<%= @username %>
+<% @repo_list = RepositoryList.new(params[:username]) %>
+<%= @repo_list.user_name(0) %>
+<%= @repo_list.repo_name(0) %>
+<%= @repo_list.description(0) %>
+<%= @repo_list.last_update(0) %>
+<%= @repo_list.language(0) %>
+<%= @repo_list.stargazer_count(0) %>
+<%= @repo_list.fork_count(0) %>
