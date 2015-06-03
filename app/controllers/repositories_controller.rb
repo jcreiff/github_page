@@ -4,5 +4,6 @@ class RepositoriesController < ApplicationController
 
   def show
     @repo_list = RepositoryList.new(params[:username])
+    @user = User.new(params[:username])
   end
 end
