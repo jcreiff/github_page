@@ -3,6 +3,7 @@ class RepositoriesController < ApplicationController
   end
 
   def show
-    @repo_list = RepositoryPage.new(params[:username])
+    @repo_list = RepositoryList.new(params[:username])
+    @user = User.new(params[:username])
   end
 end

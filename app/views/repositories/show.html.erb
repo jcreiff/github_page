@@ -1,37 +1,301 @@
-<%= @repo_list %>
 
-<li class="repo-list-item public fork">
-  <div class="repo-list-stats">
-      <!-- <%= language %> -->
-    <a class="repo-list-stat-item tooltipped tooltipped-s" href="/jcreiff/battleship/stargazers" aria-label="Stargazers">
-      <span class="octicon octicon-star"></span>
-      <!-- <%= stargazer_count %> -->
-    </a>
-    <a class="repo-list-stat-item tooltipped tooltipped-s" href="/jcreiff/battleship/network"  aria-label="Forks">
-      <span class="octicon octicon-git-branch"></span>
-      <!-- <%= fork_count %> -->
-    </a>
+<head>
+  <title><%=@user.username%><%=(@user.real_name)%></title>
+</head>
+
+<body class="logged_in  env-production macintosh  page-profile mine">
+  <a href="#start-of-content" tabindex="1" class="accessibility-aid js-skip-to-content">Skip to content</a>
+  <div class="wrapper">
+  <div class="header header-logged-in true" role="banner">
+  <div class="container clearfix">
+    <a class="header-logo-invertocat" href="https://github.com/" data-hotkey="g d" aria-label="Homepage" data-ga-click="Header, go to dashboard, icon:logo">
+    <span class="mega-octicon octicon-mark-github"></span></a>
+  <div class="site-search  js-site-search" role="search">
+    <form accept-charset="UTF-8" action="/search" class="js-site-search-form" data-global-search-url="/search" data-repo-search-url="" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+      <label class="js-chromeless-input-container form-control">
+        <div class="scope-badge">This repository</div>
+        <input type="text"
+          class="js-site-search-focus  chromeless-input"
+          data-hotkey="s"
+          name="q"
+          placeholder="Search GitHub"
+          data-global-scope-placeholder="Search GitHub"
+          data-repo-scope-placeholder="Search"
+          tabindex="1"
+          autocapitalize="off">
+      </label>
+    </form>
+      </div>
+
+  <ul class="header-nav left" role="navigation">
+    <li class="header-nav-item explore">
+      <a class="header-nav-link" href="/explore" data-ga-click="Header, go to explore, text:explore">Explore</a>
+    </li>
+    <li class="header-nav-item">
+      <a class="header-nav-link" href="https://gist.github.com" data-ga-click="Header, go to gist, text:gist">Gist</a>
+    </li>
+    <li class="header-nav-item">
+      <a class="header-nav-link" href="/blog" data-ga-click="Header, go to blog, text:blog">Blog</a>
+    </li>
+    <li class="header-nav-item">
+      <a class="header-nav-link" href="https://help.github.com" data-ga-click="Header, go to help, text:help">Help</a>
+    </li>
+  </ul>
+
+
+  <ul class="header-nav user-nav right" id="user-links">
+    <li class="header-nav-item dropdown js-menu-container">
+      <a class="header-nav-link name" href="/<%=@user.username%>" data-ga-click="Header, go to profile, text:username">
+        <img alt="@<%=@user.username%>" class="avatar" height="20" src="<%=@user.picture%>" width="20" />
+        <span class="css-truncate">
+          <span class="css-truncate-target"><%=@user.username%></span>
+        </span>
+      </a>
+    </li>
+
+    <li class="header-nav-item dropdown js-menu-container">
+      <a class="header-nav-link js-menu-target tooltipped tooltipped-s" href="/new" aria-label="Create new..." data-ga-click="Header, create new, icon:add">
+        <span class="octicon octicon-plus"></span>
+        <span class="dropdown-caret"></span>
+      </a>
+
+      <div class="dropdown-menu-content js-menu-content">
+        <ul class="dropdown-menu">
+
+    <li>
+      <a href="/new" data-ga-click="Header, create new repository, icon:repo"><span class="octicon octicon-repo"></span> New repository</a>
+    </li>
+    <li>
+      <a href="/organizations/new" data-ga-click="Header, create new organization, icon:organization"><span class="octicon octicon-organization"></span> New organization</a>
+    </li>
+
+
+
+    </ul>
   </div>
+    </li>
 
-  <h3 class="repo-list-name">
-    <!-- <a href="<%=/@USERNAME/@rep0NAME%>">
-      <%= name %>p</a> -->
-  </h3>
+  <li class="header-nav-item">
+      <span class="js-socket-channel js-updatable-content"
+        data-channel="notification-changed:<%=@user.username%>"
+        data-url="/notifications/header">
+      <a href="/notifications" aria-label="You have no unread notifications" class="header-nav-link notification-indicator tooltipped tooltipped-s" data-ga-click="Header, go to notifications, icon:read" data-hotkey="g n">
+          <span class="mail-status all-read"></span>
+          <span class="octicon octicon-inbox"></span>
+</a>  </span>
 
-    <p class="repo-list-info">
-      <span class="octicon octicon-repo-forked"></span>
-      forked from <a href="/ZAS0923/battleship">ZAS0923/battleship</a>
-    </p>
+  </li>
 
-    <p class="repo-list-description">
-      <!-- <%= description %> -->
-    </p>
+  <li class="header-nav-item">
+    <a class="header-nav-link tooltipped tooltipped-s" href="/settings/profile" id="account_settings" aria-label="Settings" data-ga-click="Header, go to settings, icon:settings">
+      <span class="octicon octicon-gear"></span>
+    </a>
+  </li>
 
-  <p class="repo-list-meta">
-      <!-- Updated <time datetime=<%= last_update %> is="relative-time">May 26, 2015</time> -->
-  </p>
+  <li class="header-nav-item">
+    <form accept-charset="UTF-8" action="/logout" class="logout-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="P+oI31j/IHiGQ9NcAcbbcmNjls88/Hszi+0VTzgmgdatfUeQw/RGUMXggbjcS5tWKVadGopsAh5DPIi26dLpow==" /></div>
+      <button class="header-nav-link sign-out-button tooltipped tooltipped-s" aria-label="Sign out" data-ga-click="Header, sign out, icon:logout">
+        <span class="octicon octicon-sign-out"></span>
+      </button>
+    </form>
+  </li>
 
-  <div class="participation-graph">
-    <!-- <poll-include-fragment src="/<%= username %>/<%= reponame %>/graphs/participation?h=80&amp;w=640"></poll-include-fragment> -->
+  </ul>
+
+
+
+
   </div>
-</li>
+</div>
+
+
+      <div id="start-of-content" class="accessibility-aid"></div>
+        <div class="site clearfix" role="main">
+
+          <div id="site-container" class="context-loader-container" data-pjax-container>
+
+
+
+
+<div class="container">
+  <div class="columns profilecols">
+    <div class="column one-fourth vcard" itemscope itemtype="http://schema.org/Person">
+        <a href="/account" aria-label="Change your avatar" class="vcard-avatar tooltipped tooltipped-s"><img alt="" class="avatar" height="230" src="<%=@user.picture%>" width="230" /></a>
+
+      <h1 class="vcard-names">
+  <span class="vcard-fullname" itemprop="name"><%=@user.real_name%></span>
+  <span class="vcard-username" itemprop="additionalName"><%=@user.username%></span>
+</h1>
+
+
+
+<ul class="vcard-details">
+  <li class="vcard-detail" itemprop="worksFor" title="<%@user.company%>"><span class="octicon octicon-organization"></span><%@user.company%></li>
+
+<li class="vcard-detail" itemprop="homeLocation" title="<%@user.location%>"><span class="octicon octicon-location"></span><%@user.location%></li>
+
+
+    <li class="vcard-detail"><span class="octicon octicon-mail"></span><a class="email" href="<%=link_to @user.email%></li>
+
+  <li class="vcard-detail"><span class="octicon octicon-clock"></span><span class="join-label">Joined on </span><%=@user.join_date%></li>
+</ul>
+
+
+      <div class="vcard-stats">
+        <a class="vcard-stat" href="/jcreiff/followers">
+          <strong class="vcard-stat-count"><%=@user.followers%></strong>
+          <span class="text-muted">Followers</span>
+        </a>
+        <a class="vcard-stat" href="/stars">
+          <strong class="vcard-stat-count">0</strong>
+          <span class="text-muted">Starred</span>
+        </a>
+        <a class="vcard-stat" href="/jcreiff/following">
+          <strong class="vcard-stat-count"><%=@user.following%></strong>
+          <span class="text-muted">Following</span>
+        </a>
+      </div>
+
+        <div class="clearfix">
+          <h3>Organizations</h3>
+              <a href="/AnnaJoe" aria-label="AnnaJoe" class="tooltipped tooltipped-n avatar-group-item" itemprop="follows"><img alt="@AnnaJoe" class="avatar" height="42" src="https://avatars1.githubusercontent.com/u/12532388?v=3&amp;s=84" width="42" /></a>
+              <a href="/cj-novel-api" aria-label="cj-novel-api" class="tooltipped tooltipped-n avatar-group-item" itemprop="follows"><img alt="@cj-novel-api" class="avatar" height="42" src="https://avatars1.githubusercontent.com/u/12647200?v=3&amp;s=84" width="42" /></a>
+        </div>
+    </div>
+
+    <div class="column three-fourths">
+
+
+      <div class="tabnav">
+          <div class="right">
+                <a href="/account" class="btn btn-sm">
+                  <span class="octicon octicon-pencil"></span>
+                  Edit profile
+                </a>
+          </div>
+
+        <nav class="tabnav-tabs" data-pjax role="navigation">
+          <a href="/jcreiff" class="tabnav-tab ">
+            <span class="octicon octicon-diff-added"></span>
+            Contributions
+          </a>
+          <a href="/jcreiff?tab=repositories" class="tabnav-tab selected">
+            <span class="octicon octicon-repo"></span>
+            Repositories
+          </a>
+          <a href="/jcreiff?tab=activity" class="tabnav-tab ">
+            <span class="octicon octicon-rss"></span>
+            Public activity
+          </a>
+        </nav>
+      </div>
+
+      <div class="tab-content js-repo-filter">
+
+  <div class="repo-tab">
+    <div class="filter-bar">
+        <a href="/new" class="btn btn-primary new-repo">
+          <span class="octicon octicon-repo"></span>
+          New
+</a>      <ul class="repo_filterer">
+          <li><a href="#" class="repo_filter js-repo-filter-tab" data-filter=".mirror">Mirrors</a></li>
+        <li><a href="#" class="repo_filter js-repo-filter-tab" data-filter=".fork">Forks</a></li>
+        <li><a href="#" class="repo_filter js-repo-filter-tab" data-filter=".source">Sources</a></li>
+          <li><a href="#" class="repo_filter js-repo-filter-tab" data-filter=".private">Private</a></li>
+          <li><a href="#" class="repo_filter js-repo-filter-tab" data-filter=".public">Public</a></li>
+        <li class="all_repos"><a href="#" class="repo_filter js-repo-filter-tab filter-selected" data-filter=".public, .private">All</a></li>
+      </ul>
+
+      <form accept-charset="UTF-8" action="/search" class="repo-search" method="get" role="search"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+        <input type="hidden" name="user" value="<%=@user.username%>">
+        <input type="text" id="your-repos-filter" name="q" class="filter_input js-filterable-field" placeholder="Find a repository&hellip;" tabindex="2">
+        <input type="submit" value="Search" class="btn">
+</form>    </div>
+
+
+
+<ul class="repo-list js-repo-list" data-filterable-for="your-repos-filter" data-filterable-type="substring">
+
+  <% @counter = 0 %>
+  <% loop do %>
+    <% @repo_list.repo_name(@counter) %>
+      <li class="repo-list-item public fork">
+        <div class="repo-list-stats">
+            <%= @repo_list.language(@counter) %>
+          <a class="repo-list-stat-item tooltipped tooltipped-s" href="/jcreiff/battleship/stargazers" aria-label="Stargazers">
+            <span class="octicon octicon-star"></span>
+            <%= @repo_list.stargazer_count(@counter) %>
+          </a>
+          <a class="repo-list-stat-item tooltipped tooltipped-s" href="/jcreiff/battleship/network"  aria-label="Forks">
+            <span class="octicon octicon-git-branch"></span>
+            <%= @repo_list.fork_count(@counter) %>
+          </a>
+        </div>
+
+        <h3 class="repo-list-name">
+          <a><%= @repo_list.repo_name(@counter) %></a>
+        </h3>
+
+          <p class="repo-list-description">
+            <%= @repo_list.description(@counter) %>
+          </p>
+
+          <p class="repo-list-meta">
+            Updated <%=@repo_list.last_update(@counter).to_date.strftime "%b %e, %Y"%>
+          </p>
+
+        <div class="participation-graph">
+          <poll-include-fragment src="/<%= @repo_list.username %>/<%= @repo_list.repo_name(@counter) %>/graphs/participation?h=80&amp;w=640"></poll-include-fragment>
+        </div>
+      </li>
+    <% @counter += 1 %>
+    <% break if @counter == @user.repo_total %>
+  <% end %>
+
+</ul>
+
+<div class="container">
+<div class="site-footer" role="contentinfo">
+<ul class="site-footer-links right">
+   <li><a href="https://status.github.com/" data-ga-click="Footer, go to status, text:status">Status</a></li>
+ <li><a href="https://developer.github.com" data-ga-click="Footer, go to api, text:api">API</a></li>
+ <li><a href="https://training.github.com" data-ga-click="Footer, go to training, text:training">Training</a></li>
+ <li><a href="https://shop.github.com" data-ga-click="Footer, go to shop, text:shop">Shop</a></li>
+   <li><a href="https://github.com/blog" data-ga-click="Footer, go to blog, text:blog">Blog</a></li>
+   <li><a href="https://github.com/about" data-ga-click="Footer, go to about, text:about">About</a></li>
+
+</ul>
+
+<a href="https://github.com" aria-label="Homepage">
+ <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
+</a>
+<ul class="site-footer-links">
+ <li>&copy; 2015 <span title="0.13246s from github-fe128-cp1-prd.iad.github.net">GitHub</span>, Inc.</li>
+   <li><a href="https://github.com/site/terms" data-ga-click="Footer, go to terms, text:terms">Terms</a></li>
+   <li><a href="https://github.com/site/privacy" data-ga-click="Footer, go to privacy, text:privacy">Privacy</a></li>
+   <li><a href="https://github.com/security" data-ga-click="Footer, go to security, text:security">Security</a></li>
+   <li><a href="https://github.com/contact" data-ga-click="Footer, go to contact, text:contact">Contact</a></li>
+</ul>
+</div>
+</div>
+
+
+<div class="fullscreen-overlay js-fullscreen-overlay" id="fullscreen_overlay">
+<div class="fullscreen-container js-suggester-container">
+<div class="textarea-wrap">
+ <textarea name="fullscreen-contents" id="fullscreen-contents" class="fullscreen-contents js-fullscreen-contents" placeholder=""></textarea>
+ <div class="suggester-container">
+   <div class="suggester fullscreen-suggester js-suggester js-navigation-container"></div>
+ </div>
+</div>
+</div>
+<div class="fullscreen-sidebar">
+<a href="#" class="exit-fullscreen js-exit-fullscreen tooltipped tooltipped-w" aria-label="Exit Zen Mode">
+ <span class="mega-octicon octicon-screen-normal"></span>
+</a>
+<a href="#" class="theme-switcher js-theme-switcher tooltipped tooltipped-w"
+ aria-label="Switch themes">
+ <span class="octicon octicon-color-mode"></span>
+</a>
+</div>
+</div>
