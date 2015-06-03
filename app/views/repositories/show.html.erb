@@ -142,7 +142,7 @@
 
 
       <div class="vcard-stats">
-        <a class="vcard-stat" href="/jcreiff/followers">
+        <a class="vcard-stat" href="/<%@user.username%>/followers">
           <strong class="vcard-stat-count"><%=@user.followers%></strong>
           <span class="text-muted">Followers</span>
         </a>
@@ -150,7 +150,7 @@
           <strong class="vcard-stat-count">0</strong>
           <span class="text-muted">Starred</span>
         </a>
-        <a class="vcard-stat" href="/jcreiff/following">
+        <a class="vcard-stat" href="/<%@user.username%>/following">
           <strong class="vcard-stat-count"><%=@user.following%></strong>
           <span class="text-muted">Following</span>
         </a>
@@ -175,15 +175,15 @@
           </div>
 
         <nav class="tabnav-tabs" data-pjax role="navigation">
-          <a href="/jcreiff" class="tabnav-tab ">
+          <a href="/<%@user.username%>" class="tabnav-tab ">
             <span class="octicon octicon-diff-added"></span>
             Contributions
           </a>
-          <a href="/jcreiff?tab=repositories" class="tabnav-tab selected">
+          <a href="/<%@user.username%>?tab=repositories" class="tabnav-tab selected">
             <span class="octicon octicon-repo"></span>
             Repositories
           </a>
-          <a href="/jcreiff?tab=activity" class="tabnav-tab ">
+          <a href="/<%@user.username%>?tab=activity" class="tabnav-tab ">
             <span class="octicon octicon-rss"></span>
             Public activity
           </a>
@@ -222,11 +222,11 @@
       <li class="repo-list-item public fork">
         <div class="repo-list-stats">
             <%= @repo_list.language(@counter) %>
-          <a class="repo-list-stat-item tooltipped tooltipped-s" href="/jcreiff/battleship/stargazers" aria-label="Stargazers">
+          <a class="repo-list-stat-item tooltipped tooltipped-s" href="/<%@user.username%>/battleship/stargazers" aria-label="Stargazers">
             <span class="octicon octicon-star"></span>
             <%= @repo_list.stargazer_count(@counter) %>
           </a>
-          <a class="repo-list-stat-item tooltipped tooltipped-s" href="/jcreiff/battleship/network"  aria-label="Forks">
+          <a class="repo-list-stat-item tooltipped tooltipped-s" href="/<%@user.username%>/battleship/network"  aria-label="Forks">
             <span class="octicon octicon-git-branch"></span>
             <%= @repo_list.fork_count(@counter) %>
           </a>
