@@ -1,8 +1,38 @@
+<ul class="repo-list js-repo-list" data-filterable-for="your-repos-filter" data-filterable-type="substring">
 
-<%= @repo_list.user_name(0) %>
-<%= @repo_list.repo_name(0) %>
-<%= @repo_list.description(0) %>
-<%= @repo_list.last_update(0) %>
-<%= @repo_list.language(0) %>
-<%= @repo_list.stargazer_count(0) %>
-<%= @repo_list.fork_count(0) %>
+  <% @counter = 0 %>
+  <% 10.times do %>
+    <% @repo_list.repo_name(@counter) %>
+      <li class="repo-list-item public fork">
+        <div class="repo-list-stats">
+            <%= @repo_list.language(@counter) %>
+          <a class="repo-list-stat-item tooltipped tooltipped-s" href="/jcreiff/battleship/stargazers" aria-label="Stargazers">
+            <span class="octicon octicon-star"></span>
+            <%= @repo_list.stargazer_count(@counter) %>
+          </a>
+          <a class="repo-list-stat-item tooltipped tooltipped-s" href="/jcreiff/battleship/network"  aria-label="Forks">
+            <span class="octicon octicon-git-branch"></span>
+            <%= @repo_list.fork_count(@counter) %>
+          </a>
+        </div>
+
+        <h3 class="repo-list-name">
+          <a><%= @repo_list.user_name(@counter) %></a>
+        </h3>
+
+          <p class="repo-list-description">
+            <%= @repo_list.description(@counter) %>
+          </p>
+
+          <p class="repo-list-meta">
+              Updated <time datetime="<%=@repo_list.last_update(@counter)%>" is="relative-time"><%=DateTime.now.strftime "%b %e, %Y"%></time>
+          </p>
+
+        <div class="participation-graph">
+          <poll-include-fragment src="/<%= @repo_list.user_name(@counter) %>/<%= @repo_list.repo_name(@counter) %>/graphs/participation?h=80&amp;w=640"></poll-include-fragment>
+        </div>
+      </li>
+      <% @counter += 1 %>
+  <% end %>
+
+</ul>
