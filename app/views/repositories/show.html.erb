@@ -17,7 +17,7 @@
         </div>
 
         <h3 class="repo-list-name">
-          <a><%= @repo_list.user_name(@counter) %></a>
+          <a><%= @repo_list.repo_name(@counter) %></a>
         </h3>
 
           <p class="repo-list-description">
@@ -32,7 +32,7 @@
           <poll-include-fragment src="/<%= @repo_list.user_name(@counter) %>/<%= @repo_list.repo_name(@counter) %>/graphs/participation?h=80&amp;w=640"></poll-include-fragment>
         </div>
       </li>
-      <% @counter += 1 %>
+    <% @counter += 1 %>
   <% end %>
 
 </ul>
