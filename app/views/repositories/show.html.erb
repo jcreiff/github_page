@@ -1,6 +1,6 @@
 
 <head>
-  <title><%=@user.username%><%=(@user.real_name)%></title>
+  <title><%=@page_title || "GitHub Profile Page"%></title>
 </head>
 
 <body class="logged_in  env-production macintosh  page-profile mine">
@@ -241,7 +241,7 @@
           </p>
 
           <p class="repo-list-meta">
-            Updated <%=@repo_list.last_update(@counter).to_date.strftime "%b %e, %Y"%>
+            Updated <%=distance_of_time_in_words_to_now(@repo_list.last_update(@counter))%> ago
           </p>
 
         <div class="participation-graph">
