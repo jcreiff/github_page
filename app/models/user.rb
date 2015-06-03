@@ -43,4 +43,8 @@ class User
     @page["following"]
   end
 
+  def repo_total
+    @page["public_repos"]
+  end
+
 end

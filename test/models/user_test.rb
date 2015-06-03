@@ -41,4 +41,9 @@ class UserTest < ActiveSupport::TestCase
     mason = User.new("masonfmatthews")
     assert_equal "", mason.email
   end
+
+  def test_can_count_repos
+    mason = User.new("masonfmatthews")
+    assert_equal 10, mason.repo_total
+  end
 end
